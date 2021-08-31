@@ -41,9 +41,9 @@ let deleteTask = setInterval(() => {
 
 
     if (checkboxes.length <= 0) {
-        console.log("[INFO] No more images to delete.");
+        console.log("[INFO] Nincs több törlhető kép.");
         clearInterval(deleteTask);
-        console.log("[SUCCESS] Tool exited.");
+        console.log("[SIKER] Az eszköz leállt.");
         return;
     }
 
