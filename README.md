@@ -1,91 +1,94 @@
-# Google Photos Delete All Tool
-If you have ever wanted to delete your thousands of photos from the [Google Photos](https://photos.google.com/) but failed to find an easy way to do so, then this is the tool for you. This script goes through all your photos in Google Photos app on the desktop and deletes them. You can visually see the process while it happens!
+Hungarian version of the original script by mrishab
 
-# Getting Started
-Follow the step-by-step instructions below to run the tool.
+# Google Fotók Minden Kép Törlése Eszköz
+Ha valaha ki akartad törölni az összes képedet a [Google Fotókból](https://photos.google.com/) de nem találtál könnyű eszközt rá, akkor ez az eszköz számodra. Ez a szkript végigmegy minden képen a Google Fotók app-on és törli azokat. Élőben láthatod, ahogy történik!
 
-## Prerequisites
-- A fairly recent version of a modern web browser. This script has not been tested with any browser other than Google Chrome `Version 71.0.3578.98`. You can [download the latest version of the Google Chrome browser here](https://www.google.com/chrome/). However, you can still use it with any modern browser, like, [Firefox](https://www.mozilla.org/en-US/firefox/download/thanks/) or [IE Edge](https://www.microsoft.com/en-ca/windows/microsoft-edge).
+# Kezdjünk neki
+Kövesd a következő lépéseket!
 
-- Use the [english language version of Google Photos](https://photos.google.com/?hl=en).
+## Szükséges dolgok
+- Egy modern böngésző. Ez a szkript nem lett tesztelve mással, mint Google Chrome `Version 71.0.3578.98`. Innen töltheted le [a legfrissebb Google Chrome verziót](https://www.google.com/chrome/). Ugyan akkor használhatod más modern böngészőkkel is mint [Firefox](https://www.mozilla.org/en-US/firefox/download/thanks/) vagy [IE Edge](https://www.microsoft.com/en-ca/windows/microsoft-edge).
 
-## Assumptions
-The manual steps assume that these steps are performed on the Google Chrome Browser. If you're using a different browser, the steps still remain the same, however, the keyboard shortcuts or browser specific keywords may not be same for you, as described below.
+- Használd a [magyar verzióját Google Fotóknak](https://photos.google.com/?hl=hu). Az angol verziós szript [itt található](https://github.com/mrishab/google-photos-delete-tool/blob/master/delete_photos.js) 
+
+## Feltételezések
+Feltételezzük, hogy a következő lépések a Google Chrome böngészőben történnek. Más böngészőkben is ezeket a lépéseket kell megtenni, de a használt billentyűk és parancsok különbözhetnek.
 
 ## Steps
-1) [Login into your Google Account](https://accounts.google.com/ServiceLogin).
+1) [Jelentkezz be a Google profilodba](https://accounts.google.com/ServiceLogin).
 
 ![Google Account Sign-in Page](images/google-signin-page.jpg)
 
-2) Go to [Google Photos](https://photos.google.com/)
+2) Látogasd meg a [Google Fotókat](https://photos.google.com/)
 
 ![Google Photos Page](images/google-photos-page.jpg)
 
-_Note: If you're logged into Google, you will see your images._
+_Megjegyzés: Ha be vagy jelentkezve Google-be látni fogod a képeidet._
 
-3) Disable image loading for Google Photos on your browser to avoid high cpu,ram and network usage
+3) Kapcsold ki a képek megjelenítését a böngésződben.
     
-    - **On Chrome**
+    - **Chrome böngészőben**
         
-        1) Click on the site padlock ( the lock icon along the url bar) -> Site settings
+        1) Kattints a lakatra ( a címsor bal szélén) -> `Webhelybeállítások`
         
-        2) Block images in the Permissions for the website
+        2) Blokkold a képeket megjelenítése jogosultságot
         
         ![Google Chrome Right Click Pop-up Menu](images/image_block.png)
         
-        3) Reload Google Photos
+        3) Frissítsd a Google Fotók oldalt (F5)
         
 
-4) Open Developer Tools. You can do so by following either of the three options
+4) Nyisd meg a fejlesztői eszközöket a következő 3 módszer egyikével
 
-    - **Keyboard Shortcut**
+    - **Billentyűzettel**
         
-        Press the three keys together in the sequence - `CTRL + SHIFT + I`
+        Nyomd meg a következő kombinációt - `CTRL + SHIFT + I` vagy nyomj F12-t
 
-    - **From the Page**
+    - **Az oldalról**
         
-        Right click on an empty area with your mouse and select `Inspect` (last option)
+        Egy üres területen nyomj jobb klikket és válaszd ki a `Vizsgálat` menüpontot
         
         ![Google Chrome Right Click Pop-up Menu](images/chrome-popup-menu.jpg)
 
-    - **From Menu**
+    - **Menüből**
         
-        1) Click on the menu button ![Google Chrome Menu Icon](images/chrome-menu-icon.jpg) on Google Chrome (By default, the button is present on the top right corner of the window). 
+        1) Nyomd meg a Menü gombot ![Google Chrome Menu Icon](images/chrome-menu-icon.jpg) 
         
-        2) Select `More tools`.
+        2) Válaszd ki a `További eszközök` menüt.
         
-        3) Select `Developer tools`.
+        3) Válaszd ki a `Fejlesztői eszközök` menüt.
         
         ![Google Chrome Menu Developer Tools](images/chrome-menu-popup.jpg)
 
-5) After opening the developer tools, click on the `Console` tab.
+5) A fejlesztői eszközök megnyitása után kattints a `Console` fülre.
     ![Google Chrome Console on Google Photos page](images/chrome-console.jpg)
     
-    Note: _This console lets you run custom code, like this tool! You can learn about it on [Google Console page](https://developers.google.com/web/tools/chrome-devtools/console/)_.
+    Megjegyzés: _A fejlesztői konzol lehetővé teszi, hogy egyedi kódokat futtass, mint ez az eszköz! Többet megtudhatsz róla a [Google Console oldalon](https://developers.google.com/web/tools/chrome-devtools/console/)_.
     
-    *You will see a warning from Google to stay cautious. If you run code in this console that's malicious, you could be hacked. Therefore, make sure that you only run the code that you understand.*
+    *Látni fogsz egy üzenetet a Google-től: "A konzol használata lehetővé teheti a támadók számára, hogy a Self-XSS nevű támadással visszaéljenek személyes adataiddal és ellopják azokat.Ne írj vagy másolj be olyan kódot, amelyet nem értesz."*
 
-6) Copy all the code in the file [delete_photos.js](delete_photos.js) and paste it in the console.
+6) Másolj be minden kódot a [delete_photos.js](delete_photos.js) fájlból a konzolba.
     ![The Code in Chrome Console](images/code-in-console.jpg)
 
-    Note: The script allows you to delete all photos or any number of photos. To delete a specific number of photos, change the value of `maxImageCount` as provided in the [example](delete_photos.js#L3).
+    Megjegyzés: A szkript alapból minden képet töröl. Ha csak egy bizonyos számú képet akarsz törölni változtasd meg a `maxImageCount` változó értékét, ahogy a példában látod [example](delete_photos.js#L3).
 
-7) Hit **ENTER** button after pasting the script in the console. The script will start running upon hitting ENTER key.
+7) Nyomj **ENTER** gombot miután bemásoltad a kódot a konzolba. A szkript el kezd futni enter után.
 
-8) Done! Now, you should see the script delete all your photos in the batch
+8) Kész! Most láthatod, ahogy a szkript tömegesen törli a képeidet. 
 
-# Debugging
+Tipp: ctrl+görgetés segítségével lekicsinyítheted a weboldalt, hogy egyszerre több képet tudjon kijelölni a szkript, így gyorsabban tud haladni.
 
-The script may not work as expected in case your internet speed is considerably slow. In that case, you may want to increase the `DELETE_DELAY_CYCLE` by few thousands of milliseconds. This is to ensure that the page has refreshed before the tool tries to delete the images again.
+# Hiba keresés
 
-# FAQs
+A szkript nem feltétlenül működik jól lassabb internet kapcsolattal. Ebben az esetben növelheted a `DELETE_DELAY_CYCLE` értékét néhány ezer milliszekundummal. Ez biztosítja, hogy a lap betöltődjön, mielőtt a szkript próbálkozik a következő adag törléssel.
 
-1) It checks and unchecks the photos, but doesn't delete them.
-    - Use the [english language version of Google Photos](https://photos.google.com/?hl=en) and run the tool again.
+# GYIK
 
-2) It stops after deleting some images.
-    - Increase the `DELETE_DELAY_CYCLE` by thousands of milliseconds as described in the [Debugging section](#Debugging).
+1) Csak kijelöli, majd megszünteti a kijelölést, de nem töröl
+    - Használd a [magyar nyelvű Google Fotókat](https://photos.google.com/?hl=hu) és futtasd újra az eszközt.
 
-3) There was a delay in loading images and the tool exited.
-    - In case this happens, you can simply paste the script again and hit enter. The script will continue doing the operation.
-    If you're using, you wouldn't have to copy and paste again. If you press the up arrow key, it will load the last command that you ran in the console. Hit ENTER key and the script will start again.
+2) Megáll néhány kép törlése után.
+    - Növeld a `DELETE_DELAY_CYCLE` értékét néhány ezer milliszekundummal.
+
+3) Késleltetve töltődtek be a képek és az eszköz leállt.
+    - Ebben az esetben frissítsd az oldalt és futtasd újra a szkriptet. Nem kell megint bemásolni, elég megnyomnod a konzolban a felfelé nyíl billentyűt, hogy visszahozza a kódot.
