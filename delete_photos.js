@@ -1,18 +1,21 @@
-// How many photos to delete?
-// Put a number value, like this
+// Hungarian version of the original script by mrishab
+// Translated every text, left the code in English
+
+// Mennyi képet akarsz törölni?
+// Írd be a számot a konstansba
 // const maxImageCount = 5896
 const maxImageCount = "ALL_PHOTOS";
 
-// Selector for Images and buttons
+// Szelektorok képeknek és gomboknak
 const ELEMENT_SELECTORS = {
     checkboxClass: '.ckGgle',
-    deleteButton: 'button[aria-label="Delete"]',
+    deleteButton: 'button[aria-label="Törlés"]',
     languageAgnosticDeleteButton: 'div[data-delete-origin] > button',
-    deleteButton: 'button[aria-label="Delete"]',
-    confirmationButton: '#yDmH0d > div.llhEMd.iWO5td > div > div.g3VIld.V639qd.bvQPzd.oEOLpc.Up8vH.J9Nfi.A9Uzve.iWO5td > div.XfpsVe.J9fJmf > button.VfPpkd-LgbsSe.VfPpkd-LgbsSe-OWXEXe-k8QpJ.nCP5yc.kHssdc.HvOprf'
+    deleteButton: 'button[aria-label="Törlés"]',
+    confirmationButton: '#yDmH0d > div.llhEMd.iWO5td > div > div.g3VIld.V639qd.bvQPzd.oEOLpc.Up8vH.J9Nfi.A9Uzve.iWO5td > div.XfpsVe.J9fJmf > button.VfPpkd-LgbsSe.VfPpkd-LgbsSe-OWXEXe-k8QpJ.nCP5yc.AjY5Oe.kHssdc.HvOprf'
 }
 
-// Time Configuration (in milliseconds)
+// Idő beállítás (milliszekundumban)
 const TIME_CONFIG = {
     delete_cycle: 10000,
     press_button_delay: 2000
@@ -47,7 +50,7 @@ let deleteTask = setInterval(() => {
     imageCount += checkboxes.length;
 
     checkboxes.forEach((checkbox) => { checkbox.click() });
-    console.log("[INFO] Deleting", checkboxes.length, "images");
+    console.log("[INFO] ", checkboxes.length, "kép törlése");
 
     setTimeout(() => {
         try {
@@ -62,11 +65,11 @@ let deleteTask = setInterval(() => {
             buttons.confirmation_button = document.querySelector(ELEMENT_SELECTORS['confirmationButton']);
             buttons.confirmation_button.click();
 
-            console.log(`[INFO] ${imageCount}/${maxImageCount} Deleted`);
+            console.log(`[INFO] ${imageCount}/${maxImageCount} törölve`);
             if (maxImageCount !== "ALL_PHOTOS" && imageCount >= parseInt(maxImageCount)) {
-                console.log(`${imageCount} photos deleted as requested`);
+                console.log(`${imageCount} kép törölve lett`);
                 clearInterval(deleteTask);
-                console.log("[SUCCESS] Tool exited.");
+                console.log("[SIKER] Az eszköz leállt.");
                 return;
             }
 
